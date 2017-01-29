@@ -10,6 +10,19 @@ var token = config.secret;
 // Create a bot that uses 'polling' to fetch new updates
 var bot = new TelegramBot(token, { polling: true });
 
+
+bot.onText(/\/help/, function (msg, match) {
+  bot.sendMessage(chatId, "\
+  /help - this help\
+  /logo - for test\
+  /radiokey - get the key for radio private stream")
+});
+
+
+bot.onText(/\/logo/, function (msg, match) {
+  bot.sendPhoto(chatId, 'assets/logo.jpg')
+});
+
 bot.onText(/\/radiokey/, function (msg, match) {
   // 'msg' is the received Message from Telegram
   // 'match' is the result of executing the regexp above on the text content
@@ -20,7 +33,13 @@ bot.onText(/\/radiokey/, function (msg, match) {
 //  var resp = match[1]; // the captured "whatever"
 
   // send back the matched "whatever" to the chat
-  bot.sendMessage(chatId, "паролата е: (копирай долния ред целия) \n983!!!sdf");
+  bot.sendI,age
+  bot.sendMessage(chatId, "\
+    потребител: hmsushano\
+    парола: hmsu6no\
+    връзка директна: http://hmsushano:hmsu6no@radio2.hmsu.org:42024/hmsu-vip.ogg\
+    (в някои браузери работи директно и самата връзка, но може и във VLC)"
+  ).then((res) => bot.sendPhoto(chatId, 'assets/vlc-howto.gif'));
 });
 
 // Matches /test
@@ -40,22 +59,19 @@ bot.onText(/\/register/, function onEditableText(msg) {
     }
   };
   bot.sendMessage(msg.from.id, 'Original Text', opts);
-  msg.resolved = true;
 });
 
 // messages.
 bot.on('message', function (msg) {
-
   if (!msg.resolved);
 
   var chatId = msg.chat.id;
   var ans = [
-	"Сметни",
-	"...kokeleei!",
-	"...see6se!",
-	"кажи честно",
-	"ти май се шегуваш нещо",
-	"сори, не те слушах. какво каза?"
+	"Сметни (/help за команди)",
+	"...see6se! (/help за команди)",
+	"кажи честно (/help за команди)",
+	"еми да (/help за команди)",
+	"сори, не те слушах. какво каза? (/help за команди)"
   ];
 /*
  const opts = {
